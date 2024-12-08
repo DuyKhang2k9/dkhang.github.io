@@ -3,7 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Links</title>
+    <title>Download Links and Lua Script</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .code-box {
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 20px;
+            width: fit-content;
+        }
+        .copy-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .copy-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <h1>Download Files</h1>
@@ -20,5 +45,34 @@
             </a>
         </li>
     </ul>
+
+    <h2>Lua Script</h2>
+    <p>Copy the Lua script below to use:</p>
+    <div class="code-box" id="code-box">
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/BloxFruits/refs/heads/main/Source.lua"))()
+    </div>
+    <button class="copy-btn" onclick="copyCode()">Copy to Clipboard</button>
+
+    <script>
+        function copyCode() {
+            // Lấy nội dung từ div chứa mã Lua
+            const codeBox = document.getElementById("code-box").innerText;
+            
+            // Tạo một textarea ẩn để sao chép văn bản
+            const tempInput = document.createElement("textarea");
+            tempInput.value = codeBox;
+            document.body.appendChild(tempInput);
+
+            // Chọn và sao chép nội dung
+            tempInput.select();
+            document.execCommand("copy");
+
+            // Xóa textarea ẩn sau khi sao chép
+            document.body.removeChild(tempInput);
+
+            // Thông báo người dùng đã sao chép
+            alert("Lua script has been copied to clipboard!");
+        }
+    </script>
 </body>
 </html>

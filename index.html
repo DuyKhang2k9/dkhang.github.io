@@ -5,9 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Download Link Và Script Blox Fruit</title>
     <style>
+        /* Tạo animation đổi màu nền */
+        @keyframes backgroundChange {
+            0% { background-color: #ff7eb3; }  /* Màu hồng */
+            25% { background-color: #8ecae6; } /* Màu xanh nhạt */
+            50% { background-color: #ffb703; } /* Màu vàng */
+            75% { background-color: #fb8500; } /* Màu cam */
+            100% { background-color: #ff7eb3; } /* Quay lại màu hồng */
+        }
+
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            animation: backgroundChange 10s infinite; /* Animation kéo dài 10s và lặp vô hạn */
+            color: #333;
         }
+
+        h1, h2 {
+            text-align: center;
+        }
+
         .code-box {
             background-color: #f4f4f4;
             border: 1px solid #ccc;
@@ -15,9 +33,10 @@
             margin-top: 20px;
             width: fit-content;
             user-select: none; /* Ngăn chặn chọn văn bản */
-            -webkit-user-select: none; /* Safari */
-            -ms-user-select: none; /* Internet Explorer */
+            -webkit-user-select: none;
+            -ms-user-select: none;
         }
+
         .copy-btn {
             display: inline-block;
             margin-top: 10px;
@@ -28,6 +47,7 @@
             border-radius: 3px;
             cursor: pointer;
         }
+
         .copy-btn:hover {
             background-color: #0056b3;
         }
@@ -55,12 +75,20 @@
     <div class="code-box" id="code-box">
         loadstring(game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/Kncrypt/refs/heads/main/sources/BloxFruit.lua"))()
     </div>
-    <button class="copy-btn" onclick="copyCode()">Sao Chép Script</button>
+    <button class="copy-btn" onclick="copyCode('code-box')">Sao Chép Script</button>
+
+    <h2>Script Mới - Team Pirates</h2>
+    <p>Bấm Vào Nút Sao Chép Để Copy Script:</p>
+    <div class="code-box" id="new-code-box">
+        getgenv().Team = "Pirates"<br>
+        loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/3b2169cf53bc6104dabe8e19562e5cc2.lua"))()
+    </div>
+    <button class="copy-btn" onclick="copyCode('new-code-box')">Sao Chép Script Mới</button>
 
     <script>
-        function copyCode() {
+        function copyCode(elementId) {
             // Lấy nội dung từ div chứa mã Lua
-            const codeBox = document.getElementById("code-box").innerText;
+            const codeBox = document.getElementById(elementId).innerText;
             
             // Tạo một textarea ẩn để sao chép văn bản
             const tempInput = document.createElement("textarea");
@@ -79,4 +107,5 @@
         }
     </script>
 </body>
+</html></body>
 </html>

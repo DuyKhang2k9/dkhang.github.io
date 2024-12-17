@@ -77,11 +77,10 @@
     </div>
     <button class="copy-btn" onclick="copyCode('code-box')">Sao Chép Script</button>
 
-    <h2>Script Mới - Team Pirates</h2>
+    <h2>Script Redz V2</h2>
     <p>Bấm Vào Nút Sao Chép Để Copy Script:</p>
     <div class="code-box" id="new-code-box">
-        getgenv().Team = "Pirates"<br>
-        loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/3b2169cf53bc6104dabe8e19562e5cc2.lua"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Omgshit/Scripts/main/MainLoader.lua"))()
     </div>
     <button class="copy-btn" onclick="copyCode('new-code-box')">Sao Chép Script Mới</button>
 
@@ -103,7 +102,7 @@
             document.body.removeChild(tempInput);
 
             // Thông báo người dùng đã sao chép
-            alert("Lua script has been copied to clipboard!");
+            alert("Script Đã Được Sao Chép Vào Bảng Nhớ Tạm!");
         }
     </script>
 </body>

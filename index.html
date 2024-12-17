@@ -6,13 +6,26 @@
     <title>Download Link Và Script Blox Fruit</title>
     <style>
         /* Tạo animation đổi màu nền */
-        @keyframes backgroundChange {
-            0% { background-color: #FFFFFF; }
-            50% { background-color: #BEBEBE; } 
-            90% { background-color: #000000; }
-            150% { background-color: #828282; }
-            200% { background-color: #FFFFFF; } 
+        body{
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(-45deg, #415800, #e560dc,
+            #ffb374, #ef5f5f, #d840b6);
+            background-size: 400% 400%;
+            animation: bg 12s ease infinite;   
         }
+
+    @keyframes bg{   
+        0%{
+          background-position: 0% 50%;
+        }
+        50%{
+           background-position: 100% 100%;        
+        }
+       100%{
+           background-position: 0% 50%;        
+        }
+    }
 
         body {
             font-family: Arial, sans-serif;
@@ -27,8 +40,9 @@
         }
 
         .code-box {
+            border-radius: 0%;
             background-color: #f4f4f4;
-            border: 1px solid #ccc;
+            border: 2px solid #ccc;
             padding: 10px;
             margin-top: 20px;
             width: fit-content;
@@ -37,19 +51,31 @@
             -ms-user-select: none;
         }
 
-        .copy-btn {
+        /* Nút bấm */
+        .copy-btn, .download-btn {
             display: inline-block;
-            margin-top: 10px;
-            padding: 5px 10px;
-            background-color: #007BFF;
+            margin: 10px 0; /* Cách dòng giữa các nút */
+            padding: 10px 20px;
+            font-size: 16px;
             color: white;
+            background-color: #007BFF;
+            text-decoration: none;
             border: none;
-            border-radius: 3px;
+            border-radius: 8px;
             cursor: pointer;
+            transition: transform 0.1s; /* Animation lún xuống */
+            user-select: none; /* Ngăn chặn bôi đen chữ */
+            pointer-events: True; /* Ngăn bôi đen toàn bộ nút */
         }
 
-        .copy-btn:hover {
+        /* Hiệu ứng hover */
+        .copy-btn:hover, .download-btn:hover {
             background-color: #0056b3;
+        }
+
+        /* Hiệu ứng lún xuống khi bấm */
+        .copy-btn:active, .download-btn:active {
+            transform: translateY(3px); /* Lún xuống 3px */
         }
     </style>
 </head>
@@ -58,19 +84,21 @@
     <p>Bấm vào tệp cần tải dưới đây:</p>
     <ul>
         <li>
-            <a href="https://www.mediafire.com/file/jf5qi5v5gblznde/Delta_X_VNG_V2.652_%25E2%2580%2594_Phong_Roblox.apk/file" target="_blank">
-                Download Delta_X_VNG_V2.652 — Phong Roblox.apk
+            <a href="https://www.mediafire.com/file/jf5qi5v5gblznde/Delta_X_VNG_V2.652_%25E2%2580%2594_Phong_Roblox.apk/file" 
+               target="_blank" class="download-btn">
+                Tải Delta_X_VNG_V2.652 — Phong Roblox.apk
             </a>
         </li>
         <li>
-            <a href="https://www.mediafire.com/file/qlymo7xbzsasutc/Phong_Roblox_File_Login_VNG_V2.652.apk/file" target="_blank">
-                Download Phong Roblox Tệp Đăng Nhập VNG V2.652.apk
+            <a href="https://www.mediafire.com/file/qlymo7xbzsasutc/Phong_Roblox_File_Login_VNG_V2.652.apk/file" 
+               target="_blank" class="download-btn">
+                Tải Phong Roblox Tệp Đăng Nhập VNG V2.652.apk
             </a>
         </li>
     </ul>
 
     <h2>Script Blox Fruit</h2>
-    <p>Update 16/12/2024</p>
+    <p>Update 17/12/2024 13:00</p>
     <p>Bấm Vào Nút Sao Chép Để Copy Script:</p>
     <div class="code-box" id="code-box">
         loadstring(game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/Kncrypt/refs/heads/main/sources/BloxFruit.lua"))()
@@ -82,7 +110,7 @@
     <div class="code-box" id="new-code-box">
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Omgshit/Scripts/main/MainLoader.lua"))()
     </div>
-    <button class="copy-btn" onclick="copyCode('new-code-box')">Sao Chép Script Mới</button>
+    <button class="copy-btn" onclick="copyCode('new-code-box')">Sao Chép Script</button>
 
     <script>
         function copyCode(elementId) {
@@ -106,5 +134,4 @@
         }
     </script>
 </body>
-</html></body>
 </html>

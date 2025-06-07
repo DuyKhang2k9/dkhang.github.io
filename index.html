@@ -1,86 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>TikTok-style Video</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      height: 100%;
-      overflow: hidden;
-      background-color: black;
-    }
-
-    .video-container {
-      height: 100vh;
-      width: 100vw;
-      display: flex;
-      flex-direction: column;
-      scroll-snap-type: y mandatory;
-      overflow-y: scroll;
-    }
-
-    .video-wrapper {
-      height: 100vh;
-      width: 100%;
-      scroll-snap-align: start;
-      position: relative;
-    }
-
-    video {
-      object-fit: cover;
-      height: 100%;
-      width: 100%;
-    }
-
-    .overlay {
-      position: absolute;
-      bottom: 10%;
-      left: 5%;
-      color: white;
-      font-size: 1.5em;
-    }
-  </style>
+  <title>Video Có Tiếng</title>
 </head>
 <body>
-  <div class="video-container">
-    <div class="video-wrapper">
-      <video src="006c4b3e50650a29d9984ab84045223a.mp4" autoplay muted loop playsinline></video>
-      <div class="overlay">Video 1</div>
-    </div>
-    <div class="video-wrapper">
-      <video src="video2.mp4" autoplay muted loop playsinline></video>
-      <div class="overlay">Video 2</div>
-    </div>
-    <!-- Thêm nhiều video-wrapper nữa nếu muốn -->
-  </div>
+  <h1>Video mẫu có âm thanh</h1>
+  
+  <video controls width="640" height="360">
+    <source src="006c4b3e50650a29d9984ab84045223a.mp4" type="video/mp4">
+    Trình duyệt của bạn không hỗ trợ thẻ video.
+  </video>
 
-  <script
-  document.addEventListener("click", function enableSoundOnce() {
-    document.querySelectorAll("video").forEach(video => {
-      video.muted = false;
-      video.play();
-    });
-    document.removeEventListener("click", enableSoundOnce);
-  });
-    // Dừng tất cả video trừ cái đang hiển thị (cải thiện hiệu năng)
-    const videos = document.querySelectorAll("video");
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.play();
-        } else {
-          entry.target.pause();
-        }
-      });
-    }, { threshold: 0.6 });
-
-    videos.forEach(video => observer.observe(video));
-  </script>
+  <p>Nhấn nút play để xem video có âm thanh.</p>
 </body>
 </html>

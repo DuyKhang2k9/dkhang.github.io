@@ -60,7 +60,14 @@
     <!-- Thêm nhiều video-wrapper nữa nếu muốn -->
   </div>
 
-  <script>
+  <script
+  document.addEventListener("click", function enableSoundOnce() {
+    document.querySelectorAll("video").forEach(video => {
+      video.muted = false;
+      video.play();
+    });
+    document.removeEventListener("click", enableSoundOnce);
+  });
     // Dừng tất cả video trừ cái đang hiển thị (cải thiện hiệu năng)
     const videos = document.querySelectorAll("video");
     const observer = new IntersectionObserver((entries) => {

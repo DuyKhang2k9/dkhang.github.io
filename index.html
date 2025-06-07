@@ -1,144 +1,79 @@
 <!DOCTYPE html>
-<html lang="en" translate="no">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Link Và Script Blox Fruit</title>
-    <style>
-        /* Tạo animation đổi màu nền */
-        body{
-            margin: 0;
-            height: 100vh;
-            background: linear-gradient(-45deg, #415800, #e560dc,
-            #ffb374, #ef5f5f, #d840b6);
-            background-size: 400% 400%;
-            animation: bg 12s ease infinite;   
-        }
-
-    @keyframes bg{   
-        0%{
-          background-position: 0% 50%;
-        }
-        50%{
-           background-position: 100% 100%;        
-        }
-       100%{
-           background-position: 0% 50%;        
-        }
+  <meta charset="UTF-8">
+  <title>TikTok-style Video</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            animation: backgroundChange 10s infinite; /* Animation kéo dài 10s và lặp vô hạn */
-            color: #333;
-        }
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      background-color: black;
+    }
 
-        h1, h2 {
-            text-align: center;
-        }
+    .video-container {
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+    }
 
-        .code-box {
-            border-radius: 0%;
-            background-color: #f4f4f4;
-            border: 2px solid #ccc;
-            padding: 10px;
-            margin-top: 20px;
-            width: fit-content;
-            user-select: none; /* Ngăn chặn chọn văn bản */
-            -webkit-user-select: none;
-            -ms-user-select: none;
-        }
+    .video-wrapper {
+      height: 100vh;
+      width: 100%;
+      scroll-snap-align: start;
+      position: relative;
+    }
 
-        /* Nút bấm */
-        .copy-btn, .download-btn {
-            display: inline-block;
-            margin: 10px 0; /* Cách dòng giữa các nút */
-            padding: 10px 20px;
-            font-size: 16px;
-            color: white;
-            background-color: #007BFF;
-            text-decoration: none;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.1s; /* Animation lún xuống */
-            user-select: none; /* Ngăn chặn bôi đen chữ */
-            pointer-events: True; /* Ngăn bôi đen toàn bộ nút */
-        }
+    video {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
 
-        /* Hiệu ứng hover */
-        .copy-btn:hover, .download-btn:hover {
-            background-color: #0056b3;
-        }
-
-        /* Hiệu ứng lún xuống khi bấm */
-        .copy-btn:active, .download-btn:active {
-            transform: translateY(3px); /* Lún xuống 3px */
-        }
-    </style>
+    .overlay {
+      position: absolute;
+      bottom: 10%;
+      left: 5%;
+      color: white;
+      font-size: 1.5em;
+    }
+  </style>
 </head>
 <body>
-    <h1>Tải Tệp</h1>
-    <p>Bấm vào tệp cần tải dưới đây:</p>
-    <ul>
-        <li>
-            <a href="https://www.mediafire.com/file/ww60qbxon2z1fyf/V2.656_Login_VNG.apk/file59" 
-               target="_blank" class="download-btn">
-                Tải VNG_Flie_Login.apk
-            </a>
-        </li>
-        <li>
-            <a href="https://www.mediafire.com/file/xknbx18a9mkjq8f/V2.656_Delta_VNG_Login.apk/file?dkey=118s8n16pcj&r=498" 
-               target="_blank" class="download-btn">
-                Tải Delta_X_VNG.apk
-            </a>
-        </li>
-    </ul>
-
-    <h2>Script Blox Fruit</h2>
-    <p>Update 17/12/2024 13:00</p>
-    <p>Bấm Vào Nút Sao Chép Để Copy Script:</p>
-    <div class="code-box" id="code-box">
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/Kncrypt/refs/heads/main/sources/BloxFruit.lua"))()
+  <div class="video-container">
+    <div class="video-wrapper">
+      <video src="video1.mp4" autoplay muted loop playsinline></video>
+      <div class="overlay">Video 1</div>
     </div>
-    <button class="copy-btn" onclick="copyCode('code-box')">Sao Chép Script</button>
-
-    <h2>Script Redz V2</h2>
-    <p>Bấm Vào Nút Sao Chép Để Copy Script:</p>
-    <div class="code-box" id="new-code-box">
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Omgshit/Scripts/main/MainLoader.lua"))()
+    <div class="video-wrapper">
+      <video src="video2.mp4" autoplay muted loop playsinline></video>
+      <div class="overlay">Video 2</div>
     </div>
-    <button class="copy-btn" onclick="copyCode('new-code-box')">Sao Chép Script</button>
+    <!-- Thêm nhiều video-wrapper nữa nếu muốn -->
+  </div>
 
-    <h2>Script Redz 1</h2>
-    <p>Bấm Vào Nút Sao Chép Để Copy Script:</p>
-    <div class="code-box" id="code-box1">
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/BloxFruits/refs/heads/main/Source.lua"))()
-    </div>
-    <button class="copy-btn" onclick="copyCode('code-box1')">Sao Chép Script</button>
-    
-    <script>
-        function copyCode(elementId) {
-            // Lấy nội dung từ div chứa mã Lua
-            const codeBox = document.getElementById(elementId).innerText;
-            
-            // Tạo một textarea ẩn để sao chép văn bản
-            const tempInput = document.createElement("textarea");
-            tempInput.value = codeBox;
-            document.body.appendChild(tempInput);
-
-            // Chọn và sao chép nội dung
-            tempInput.select();
-            document.execCommand("copy");
-
-            // Xóa textarea ẩn sau khi sao chép
-            document.body.removeChild(tempInput);
-
-            // Thông báo người dùng đã sao chép
-            alert("Script Đã Được Sao Chép Vào Bảng Nhớ Tạm!");
+  <script>
+    // Dừng tất cả video trừ cái đang hiển thị (cải thiện hiệu năng)
+    const videos = document.querySelectorAll("video");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.play();
+        } else {
+          entry.target.pause();
         }
-    </script>
+      });
+    }, { threshold: 0.6 });
+
+    videos.forEach(video => observer.observe(video));
+  </script>
 </body>
 </html>

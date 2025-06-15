@@ -16,11 +16,30 @@
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
 }
+/* Mặc định (sáng)
+body {
+  background-color: white;
+  
+}*/
 
+/* Tự chuyển sang tối nếu hệ thống bật dark mode */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: white;
+  }
+
+  input, button {
+    background-color: #1e1e1e;
+    color: white;
+    border: 1px solid #333;
+  }
+}
 body {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: black;
   min-height: 100vh;
   /* background-color: red; */
   background: url('/Dev/background-dep.jpg') no-repeat;

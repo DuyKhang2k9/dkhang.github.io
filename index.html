@@ -1,27 +1,178 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Khải Ngu</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #74ebd5, #ACB6E5);
-      font-family: Arial, sans-serif;
-    }
-    h1 {
-      font-size: 80px;
-      color: #ffffff;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>Theo dõi luyện tập & ăn uống</title>
+  <link rel="stylesheet" href="/Dev/luyen-tap.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>khải ngu :)</h1>
+  <div class="container">
+    <h1>Theo dõi luyện tập & ăn uống</h1>
+
+    <label for="daySelect">Chọn ngày:</label>
+    <select id="daySelect" onchange="loadSchedule()">
+      <option value="day1">Ngày 1</option>
+      <option value="day2">Ngày 2</option>
+      <option value="day3">Ngày 3</option>
+      <option value="day4">Ngày 4</option>
+      <option value="day5">Ngày 5</option>
+      <option value="day6">Ngày 6</option>
+      <option value="day7">Ngày 7</option>
+    </select>
+
+    <div id="scheduleList" class="section"></div>
+    <div id="mealList" class="section"></div>
+
+    <button onclick="saveToTxt()">Lưu kết quả ra file TXT</button>
+  </div>
+
+  <script>
+    const schedules = {
+      day1: [
+        "Treo người – 3-5 lần x 30 giây (nếu có)",
+        "Chống đẩy – 4 hiệp x 10-15 lần",
+        "Cobra stretch – 3 lần x 30 giây",
+        "Vươn tay kiễng chân – 3 hiệp x 20 lần",
+        "Tạ chai nước: Gập tay – 3 hiệp x 12 lần",
+        "Tạ chai nước: Đẩy tay lên – 3 hiệp x 12 lần"
+      ],
+      day2: [
+        "Bật nhảy tại chỗ – 3 hiệp x 15 lần",
+        "Gập người chạm ngón chân – 3 lần x 30 giây",
+        "Cobra stretch – 3 lần x 30 giây",
+        "Chống đẩy – 3 hiệp x 10 lần"
+      ],
+      day3: [
+        "Chống đẩy – 4 hiệp x 12 lần",
+        "Tạ chai nước: Gập tay – 3 hiệp x 12 lần",
+        "Tạ chai nước: Đẩy thẳng lên – 3 hiệp x 12 lần",
+        "Cobra stretch – 3 lần x 30 giây",
+        "Kiễng chân vươn người – 3 hiệp x 20 lần"
+      ],
+      day4: [
+        "Bật nhảy tại chỗ – 3 hiệp x 20 lần",
+        "Gập người chạm chân – 3 lần x 30 giây",
+        "Cobra stretch – 3 lần x 30 giây"
+      ],
+      day5: [
+        "Chống đẩy – 4 hiệp x 15 lần",
+        "Tạ chai nước: Gập tay – 3 hiệp x 12 lần",
+        "Tạ chai nước: Đẩy vai – 3 hiệp x 12 lần",
+        "Cobra stretch – 3 lần x 30 giây",
+        "Vươn người – 3 hiệp x 20 lần"
+      ],
+      day6: [
+        "Đi bộ quanh nhà 10 phút (hoặc leo cầu thang nhẹ)",
+        "Cobra stretch – 3 lần x 30 giây",
+        "Gập người – 3 lần x 30 giây"
+      ],
+      day7: [
+        "Giãn cơ nhẹ nếu cần"
+      ]
+    };
+
+    const meals = {
+      day1: [
+        "Sáng: 1 ly sữa tươi + 1 quả trứng luộc + 1 chén cơm + rau xào",
+        "Giữa buổi: 1 quả chuối",
+        "Trưa: Cơm + cá cơm rim + canh bí đỏ thịt bằm + dưa leo",
+        "Xế chiều: 1 hộp sữa chua",
+        "Tối: Cơm + thịt gà luộc + rau luộc + 1 quả cam",
+        "Trước ngủ: 1 ly sữa ấm"
+      ],
+      day2: [
+        "Sáng: 1 ly sữa + 2 lát bánh mì + 1 quả trứng ốp la",
+        "Giữa buổi: 1 nắm hạt đậu phộng rang",
+        "Trưa: Cơm + canh rong biển tôm + đậu hũ sốt cà",
+        "Xế chiều: 1 quả xoài nhỏ",
+        "Tối: Cơm + thịt heo nạc kho + cải thìa xào tỏi",
+        "Trước ngủ: 1 ly sữa"
+      ],
+      day3: [
+        "Sáng: 1 ly sữa + 1 củ khoai lang luộc + 1 quả trứng",
+        "Giữa buổi: 1 quả táo",
+        "Trưa: Cơm + canh mồng tơi nấu tôm + thịt bò xào cần tây",
+        "Xế chiều: 1 hộp sữa chua",
+        "Tối: Cơm + trứng chiên + dưa leo + rau luộc",
+        "Trước ngủ: 1 ly sữa"
+      ],
+      day4: [
+        "Sáng: 1 ly sữa + 1 quả chuối + 1 lát bánh mì trứng",
+        "Giữa buổi: 1 nắm hạt bí",
+        "Trưa: Cơm + cá nục kho + canh cải xanh",
+        "Xế chiều: 1 quả ổi",
+        "Tối: Cơm + gà hấp hành + bắp cải luộc",
+        "Trước ngủ: 1 ly sữa"
+      ],
+      day5: [
+        "Sáng: 1 ly sữa + 1 củ khoai mì luộc + 1 quả trứng luộc",
+        "Giữa buổi: 1 quả xoài",
+        "Trưa: Cơm + canh cua rau đay + đậu hũ chiên",
+        "Xế chiều: 1 hộp sữa chua",
+        "Tối: Cơm + thịt heo nạc rang sả + rau luộc",
+        "Trước ngủ: 1 ly sữa"
+      ],
+      day6: [
+        "Sáng: 1 ly sữa + 1 lát bánh mì + 1 quả trứng ốp la",
+        "Giữa buổi: 1 nắm hạt điều",
+        "Trưa: Cơm + cá thu kho + canh bí xanh",
+        "Xế chiều: 1 quả cam",
+        "Tối: Cơm + trứng cuộn rau củ + cải luộc",
+        "Trước ngủ: 1 ly sữa"
+      ],
+      day7: [
+        "Sáng: 1 ly sữa + 1 củ khoai lang + 1 quả trứng luộc",
+        "Giữa buổi: 1 quả chuối",
+        "Trưa: Cơm + canh rau ngót thịt bằm + tôm rim",
+        "Xế chiều: 1 hộp sữa chua",
+        "Tối: Cơm + thịt gà xào nấm + rau luộc",
+        "Trước ngủ: 1 ly sữa"
+      ]
+    };
+
+    function loadSchedule() {
+      const day = document.getElementById("daySelect").value;
+
+      const scheduleList = document.getElementById("scheduleList");
+      scheduleList.innerHTML = "<h3>Lịch tập</h3>";
+      (schedules[day] || []).forEach((item, index) => {
+        const div = document.createElement("div");
+        div.className = "task";
+        div.innerHTML = `
+          <input type="checkbox" id="task${index}">
+          <label for="task${index}">${item}</label>
+        `;
+        scheduleList.appendChild(div);
+      });
+
+      const mealList = document.getElementById("mealList");
+      mealList.innerHTML = "<h3>Lịch ăn uống</h3>";
+      (meals[day] || []).forEach((item) => {
+        const div = document.createElement("div");
+        div.className = "meal";
+        div.textContent = item;
+        mealList.appendChild(div);
+      });
+    }
+
+    function saveToTxt() {
+      const day = document.getElementById("daySelect").value;
+      let lines = [];
+      lines.push("=== LỊCH TẬP ===");
+      (schedules[day] || []).forEach(item => lines.push("- " + item));
+      lines.push("\n=== LỊCH ĂN UỐNG ===");
+      (meals[day] || []).forEach(item => lines.push("- " + item));
+
+      let text = lines.join("\n");
+      let blob = new Blob([text], { type: "text/plain" });
+      let link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `lich_ngay_${day}.txt`;
+      link.click();
+    }
+
+    loadSchedule();
+  </script>
 </body>
 </html>

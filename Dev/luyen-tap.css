@@ -1,0 +1,63 @@
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #fce4ec);
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      max-width: 450px;
+      width: 100%;
+    }
+    h1 {
+      text-align: center;
+      color: #6a1b9a;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    select {
+      width: 100%;
+      padding: 8px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    .section {
+      margin-bottom: 20px;
+    }
+    .section h3 {
+      color: #7b1fa2;
+      margin-bottom: 10px;
+    }
+    .task, .meal {
+      margin: 5px 0;
+    }
+    .task input {
+      margin-right: 8px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #7b1fa2;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #6a1b9a;
+    }
+    @media (max-width: 500px) {
+      h1 { font-size: 24px; }
+    }
+  
